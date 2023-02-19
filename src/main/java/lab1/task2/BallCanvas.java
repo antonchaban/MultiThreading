@@ -1,13 +1,18 @@
 package lab1.task2;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 
+@Getter
+@Setter
 public class BallCanvas extends JPanel {
     private ArrayList<Ball> balls = new ArrayList<>();
     private ArrayList<Pocket> pockets;
-
+    private int droppedCounter = 0;
     public void add(Ball b) {
         this.balls.add(b);
     }

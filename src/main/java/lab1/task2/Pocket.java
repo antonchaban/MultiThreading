@@ -1,8 +1,13 @@
 package lab1.task2;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.awt.*;
 import java.awt.geom.Ellipse2D;
 
+@Getter
+@Setter
 public class Pocket {
     private final int x;
     private final int y;
@@ -19,21 +24,6 @@ public class Pocket {
         g2.fill(new Ellipse2D.Double(x, y, radius*2, radius*2));
     }
 
-    public int getX() {
-        return x;
-    }
-
-    public int getY() {
-        return y;
-    }
-
-    public int getRadius() {
-        return radius;
-    }
-
-    public void setRadius(int radius) {
-        this.radius = radius;
-    }
 
     @Override
     public String toString() {
@@ -41,5 +31,11 @@ public class Pocket {
                 "x=" + x +
                 ", y=" + y +
                 '}';
+    }
+
+    public boolean isBallInPocket(int x, int y) {
+        double collideRadius = this.getRadius()*2;
+        double distance = Math.sqrt(Math.pow(this.getX() - x, 2) + Math.pow(this.getY() - y, 2));
+        return distance <= collideRadius;
     }
 }

@@ -1,11 +1,16 @@
 package lab1.task2;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.awt.*;
 import java.awt.geom.Ellipse2D;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+@Getter
+@Setter
 class Ball {
     private Component canvas;
     private static final int XSIZE = 20;
@@ -20,6 +25,15 @@ class Ball {
 
     public List<Pocket> getPockets() {
         return pockets;
+    }
+
+    private boolean isBallInPocket() {
+        for (Pocket pocket : pockets) {
+            if (pocket.isBallInPocket(x, y)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public Ball(ArrayList<Pocket> pockets, Component c) {
@@ -47,6 +61,12 @@ class Ball {
     public void move() {
         x += dx;
         y += dy;
+        if (isBallInPocket()) {
+            isInPocket = true;
+            System.err.println("Ball is in pocket");
+            this.canvas.repaint();
+            return;
+        }
         if (x < 0) {
             x = 0;
             dx = -dx;
