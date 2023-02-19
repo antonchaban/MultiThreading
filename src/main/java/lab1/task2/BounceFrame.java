@@ -1,4 +1,4 @@
-package lab1;
+package lab1.task2;
 
 import javax.swing.*;
 import java.awt.*;
@@ -27,7 +27,7 @@ public class BounceFrame extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                Ball b = new Ball(canvas);
+                Ball b = new Ball(canvas.getPockets(), canvas);
                 canvas.add(b);
 
                 BallThread thread = new BallThread(b);
