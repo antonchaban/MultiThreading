@@ -12,6 +12,7 @@ public class BallThread extends Thread {
         try {
             for (int i = 1; i < 10000; i++) {
                 if (b.isInPocket()) {
+//                    this.interrupt();
                     return;
                 }
                 b.move();
