@@ -13,6 +13,8 @@ public class BallCanvas extends JPanel {
     private ArrayList<Ball> balls = new ArrayList<>();
     private ArrayList<Pocket> pockets;
     private int droppedCounter = 0;
+    JLabel droppedCounterLabel;
+
     public void add(Ball b) {
         this.balls.add(b);
     }
@@ -27,14 +29,18 @@ public class BallCanvas extends JPanel {
         Graphics2D g2 = (Graphics2D) g;
         pockets = generatePockets();
         paintPockets(g2);
+        for (Ball ball : balls) {
+            if (ball.isInPocket()) {
+                droppedCounter++;
+            }
+        }
+        droppedCounterLabel.setText("Dropped balls: " + droppedCounter);
+        balls.removeIf(ball -> ball.isInPocket());
         for (Ball b : balls) {
             b.draw(g2);
         }
     }
 
-    private void droppedCounter() { // todo
-
-    }
 
     private ArrayList<Pocket> generatePockets() {
         ArrayList<Pocket> pockets = new ArrayList<>();
@@ -50,7 +56,6 @@ public class BallCanvas extends JPanel {
             p.draw(g2);
         }
     }
-
 
 
 }

@@ -11,6 +11,9 @@ public class BallThread extends Thread {
     public void run() {
         try {
             for (int i = 1; i < 10000; i++) {
+                if (b.isInPocket()) {
+                    return;
+                }
                 b.move();
                 System.out.println("Thread name = "
                         + Thread.currentThread().getName());
