@@ -1,11 +1,11 @@
 package lab1.task5;
 
 public class PrintGood extends Thread {
-    private final String symbol;
+    private final String character;
     private static final Object lock = new Object();
 
-    public PrintGood(String symbol) {
-        this.symbol = symbol;
+    public PrintGood(String character) {
+        this.character = character;
     }
 
     public void run() {
@@ -13,7 +13,7 @@ public class PrintGood extends Thread {
             for (int j = 0; j < 100; j++) {
                 synchronized (lock) {
                     lock.notify();
-                    System.out.print(this.symbol);
+                    System.out.print(this.character);
 /*                    if (j%100 == 0) {
                         System.out.println();
                     }*/

@@ -25,14 +25,6 @@ public class Pocket {
     }
 
 
-    @Override
-    public String toString() {
-        return "Pocket{" +
-                "x=" + x +
-                ", y=" + y +
-                '}';
-    }
-
     public boolean isBallInPocket(int x, int y) {
         double collideRadius = this.getRadius()*2;
         double distance = Math.sqrt(Math.pow(this.getX() - x, 2) + Math.pow(this.getY() - y, 2));
