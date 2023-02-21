@@ -2,7 +2,7 @@ package lab1.task5;
 
 public class PrintGood extends Thread {
     private final String symbol;
-    private static Object lock = new Object();
+    private static final Object lock = new Object();
 
     public PrintGood(String symbol) {
         this.symbol = symbol;
